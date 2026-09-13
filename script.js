@@ -1,50 +1,112 @@
-const journal=document.getElementById('journal');
-const result=document.getElementById('result');
-const status=document.getElementById('status');
-const positiveWords=['happy','good','great','love','lovely','excited','calm','peaceful','proud','grateful','hope','hopeful','fun','better','okay','ok','smile','smiling','enjoy','enjoyed','success','relaxed','confident'];
-const negativeWords=['sad','bad','angry','hate','lonely','tired','exhausted','stressed','stress','anxious','anxiety','worried','worry','cry','crying','hurt','hopeless','pointless','empty','fail','failed','failure','overwhelmed','upset','terrible','awful','scared','fear'];
+ const questions = [
+    "Do you often feel afraid of how the other person will react to you?",
 
-function analyzeText(text){
-  const words=text.toLowerCase().match(/[a-z']+/g)||[];
-  let pos=0,neg=0;
-  words.forEach(w=>{if(positiveWords.includes(w))pos++;if(negativeWords.includes(w))neg++;});
-  const total=Math.max(words.length,1);
-  let positive=Math.round((pos/Math.max(pos+neg,1))*70+15);
-  let negative=Math.round((neg/Math.max(pos+neg,1))*70+10);
-  if(pos===0&&neg===0){positive=25;negative=20}
-  if(pos>neg){positive=Math.min(75,positive+10);negative=Math.max(8,negative-5)}
-  if(neg>pos){negative=Math.min(75,negative+10);positive=Math.max(8,positive-5)}
-  let neutral=Math.max(100-positive-negative,5);
-  const sum=positive+neutral+negative;
-  positive=Math.round(positive*100/sum); negative=Math.round(negative*100/sum); neutral=100-positive-negative;
-  return {positive,neutral,negative,pos,neg};
+    "Do they repeatedly hurt you and then become unusually loving or apologetic?",
+
+    "Do you find yourself making excuses for their harmful behaviour?",
+
+    "Do you feel responsible for keeping the relationship peaceful?",
+
+    "Have you become distant from friends or family because of the relationship?",
+
+    "Do you feel that you cannot leave even though you know the relationship is unhealthy?",
+
+    "Do you frequently feel confused about whether the relationship is good or bad for you?",
+
+    "Do you feel like you must constantly change yourself to avoid conflict?"
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+
+
+function answer(value) {
+
+    score += value;
+
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+        showResult();
+        return;
+    }
+
+    updateQuestion();
 }
 
-document.getElementById('analyzeBtn').addEventListener('click',()=>{
-  const text=journal.value.trim();
-  if(text.length<10){status.textContent='Write a little more so the prototype can analyze your check-in.';return}
-  status.textContent='Analyzing your communication...';
-  setTimeout(()=>{
-    const r=analyzeText(text);
-    document.getElementById('positive').textContent=r.positive+'%';
-    document.getElementById('neutral').textContent=r.neutral+'%';
-    document.getElementById('negative').textContent=r.negative+'%';
-    let mood,emoji,message;
-    if(r.negative>r.positive+15){mood='More negative language detected';emoji='🌧️';message='Your recent words contain more negative language than positive language. Consider taking a small pause, checking in with yourself, or talking to someone you trust.'}
-    else if(r.positive>r.negative+15){mood='More positive language detected';emoji='🌤️';message='Your check-in contains more positive language. Keep noticing what helps you feel supported and grounded.'}
-    else{mood='Mostly balanced language';emoji='🌿';message='Your communication looks fairly balanced in this check-in. One entry cannot describe your wellbeing, so focus on patterns over time.'}
-    document.getElementById('mood').textContent=mood;
-    document.getElementById('emoji').textContent=emoji;
-    document.getElementById('message').textContent=message;
-    result.classList.remove('hidden');
-    const old=Number(localStorage.getItem('traumabond_checkins')||0)+1;
-    localStorage.setItem('traumabond_checkins',old);
-    document.getElementById('checkins').textContent=old;
-    const bars=document.querySelectorAll('#bars span');
-    const idx=(old-1)%bars.length;
-    bars[idx].style.height=Math.min(90,Math.max(20,r.negative+20))+'%';
-    status.textContent='Analysis complete.';
-  },450);
-});
 
-document.getElementById('checkins').textContent=localStorage.getItem('traumabond_checkins')||0;
+function updateQuestion() {
+
+    const questionElement = document.getElementById("question");
+    const numberElement = document.getElementById("question-number");
+    const progressBar = document.getElementById("progress-bar");
+
+    questionElement.textContent = questions[currentQuestion];
+
+    numberElement.textContent =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+    const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    progressBar.style.width = progress + "%";
+}
+
+
+function showResult() {
+
+    document.getElementById("question-area").classList.add("hidden");
+
+    const result = document.getElementById("result");
+
+    result.classList.remove("hidden");
+
+    const title = document.getElementById("result-title");
+    const text = document.getElementById("result-text");
+
+
+    if (score <= 2) {
+
+        title.textContent = "Few warning signs reported";
+
+        text.textContent =
+            "Your answers indicate relatively few of the warning signs included in this awareness check. This does not determine whether a relationship is healthy or unhealthy. Continue paying attention to how you feel, whether you feel respected, and whether you feel safe.";
+
+    }
+
+    else if (score <= 5) {
+
+        title.textContent = "Some warning signs are present";
+
+        text.textContent =
+            "Your answers indicate that some concerning patterns may be present. Consider talking with someone you trust and learning more about healthy relationship boundaries and emotional safety.";
+
+    }
+
+    else {
+
+        title.textContent = "Several warning signs are present";
+
+        text.textContent =
+            "Your answers indicate several patterns that can occur in unhealthy or harmful relationships. This result is not a diagnosis, but it may be worth speaking with a trusted person or qualified professional. If you are in immediate danger, seek local emergency help.";
+    }
+}
+
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    document.getElementById("question-area").classList.remove("hidden");
+
+    document.getElementById("result").classList.add("hidden");
+
+    updateQuestion();
+}
+
+
+updateQuestion();
