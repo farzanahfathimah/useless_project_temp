@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TraumaBond | Wellbeing Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand"><span>🧠</span> TraumaBond</div>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#checkin">Check-in</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </nav>
 
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">COMMUNICATION-BASED WELLBEING TRACKER</p>
+        <h1>Your words tell a story.<br><span>Notice the changes.</span></h1>
+        <p class="lead">TraumaBond helps you reflect on changes in your communication patterns over time — privately and without diagnosing you.</p>
+        <a class="button" href="#checkin">Start a Check-in →</a>
+      </div>
+      <div class="hero-card">
+        <div class="orb">💭</div>
+        <h3>Today's reflection</h3>
+        <p>How are you feeling today?</p>
+        <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i></div>
+        <small>Personal baseline • Private by design</small>
+      </div>
+    </section>
+
+    <section class="features">
+      <div><b>🔒 Privacy First</b><p>You choose what to analyze.</p></div>
+      <div><b>🧠 Pattern Analysis</b><p>Looks for communication changes.</p></div>
+      <div><b>📈 Personal Trends</b><p>Compares you with your own baseline.</p></div>
+      <div><b>💬 Gentle Support</b><p>Encourages reflection, not diagnosis.</p></div>
+    </section>
+
+    <section id="checkin" class="section">
+      <p class="eyebrow">DAILY CHECK-IN</p>
+      <h2>Put your thoughts into words.</h2>
+      <p class="muted">Write a few sentences about your day. Avoid sharing names, passwords, or other private information.</p>
+      <textarea id="journal" placeholder="Today I feel..."></textarea>
+      <div class="actions">
+        <button class="button" id="analyzeBtn">Analyze My Check-in</button>
+        <span id="status"></span>
+      </div>
+
+      <div id="result" class="result hidden">
+        <div class="result-head">
+          <div>
+            <span class="label">COMMUNICATION SNAPSHOT</span>
+            <h3 id="mood">—</h3>
+          </div>
+          <div id="emoji" class="big-emoji">💭</div>
+        </div>
+        <div class="scores">
+          <div><span>Positive</span><strong id="positive">0%</strong></div>
+          <div><span>Neutral</span><strong id="neutral">0%</strong></div>
+          <div><span>Negative</span><strong id="negative">0%</strong></div>
+        </div>
+        <p id="message" class="support"></p>
+        <p class="disclaimer">This is a reflection tool, not a medical or mental-health diagnosis.</p>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section dashboard">
+      <div>
+        <p class="eyebrow">YOUR DASHBOARD</p>
+        <h2>Communication trend</h2>
+        <p class="muted">A simple visual history of your check-ins.</p>
+      </div>
+      <div class="chart">
+        <div class="gridline"></div><div class="gridline"></div><div class="gridline"></div>
+        <div class="bars" id="bars">
+          <span style="height:30%"></span><span style="height:45%"></span><span style="height:38%"></span>
+          <span style="height:62%"></span><span style="height:52%"></span><span style="height:70%"></span>
+          <span style="height:58%"></span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div><small>CHECK-INS</small><b id="checkins">0</b></div>
+        <div><small>BASELINE</small><b>Building</b></div>
+        <div><small>STATUS</small><b class="good">Active</b></div>
+      </div>
+    </section>
+
+    <section id="privacy" class="privacy">
+      <h2>🔒 Privacy by design</h2>
+      <p>TraumaBond is designed around voluntary check-ins. In this prototype, analysis happens in your browser and your entries are not uploaded to a server.</p>
+    </section>
+  </main>
+
+  <footer>TraumaBond © 2026 • Built for wellbeing reflection, not diagnosis.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
