@@ -1,102 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TraumaBond | Wellbeing Tracker</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TraumaBond</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <nav class="nav">
-    <div class="brand"><span>🧠</span> TraumaBond</div>
-    <div class="navlinks">
-      <a href="#home">Home</a>
-      <a href="#checkin">Check-in</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#privacy">Privacy</a>
-    </div>
-  </nav>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-text">
-        <p class="eyebrow">COMMUNICATION-BASED WELLBEING TRACKER</p>
-        <h1>Your words tell a story.<br><span>Notice the changes.</span></h1>
-        <p class="lead">TraumaBond helps you reflect on changes in your communication patterns over time — privately and without diagnosing you.</p>
-        <a class="button" href="#checkin">Start a Check-in →</a>
-      </div>
-      <div class="hero-card">
-        <div class="orb">💭</div>
-        <h3>Today's reflection</h3>
-        <p>How are you feeling today?</p>
-        <div class="mini-bars"><i></i><i></i><i></i><i></i><i></i></div>
-        <small>Personal baseline • Private by design</small>
-      </div>
-    </section>
+    <header class="navbar">
+        <div class="logo">Trauma<span>Bond</span></div>
 
-    <section class="features">
-      <div><b>🔒 Privacy First</b><p>You choose what to analyze.</p></div>
-      <div><b>🧠 Pattern Analysis</b><p>Looks for communication changes.</p></div>
-      <div><b>📈 Personal Trends</b><p>Compares you with your own baseline.</p></div>
-      <div><b>💬 Gentle Support</b><p>Encourages reflection, not diagnosis.</p></div>
-    </section>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#learn">Learn</a>
+            <a href="#check">Self Check</a>
+            <a href="#resources">Resources</a>
+        </nav>
+    </header>
 
-    <section id="checkin" class="section">
-      <p class="eyebrow">DAILY CHECK-IN</p>
-      <h2>Put your thoughts into words.</h2>
-      <p class="muted">Write a few sentences about your day. Avoid sharing names, passwords, or other private information.</p>
-      <textarea id="journal" placeholder="Today I feel..."></textarea>
-      <div class="actions">
-        <button class="button" id="analyzeBtn">Analyze My Check-in</button>
-        <span id="status"></span>
-      </div>
 
-      <div id="result" class="result hidden">
-        <div class="result-head">
-          <div>
-            <span class="label">COMMUNICATION SNAPSHOT</span>
-            <h3 id="mood">—</h3>
-          </div>
-          <div id="emoji" class="big-emoji">💭</div>
-        </div>
-        <div class="scores">
-          <div><span>Positive</span><strong id="positive">0%</strong></div>
-          <div><span>Neutral</span><strong id="neutral">0%</strong></div>
-          <div><span>Negative</span><strong id="negative">0%</strong></div>
-        </div>
-        <p id="message" class="support"></p>
-        <p class="disclaimer">This is a reflection tool, not a medical or mental-health diagnosis.</p>
-      </div>
-    </section>
+    <main>
 
-    <section id="dashboard" class="section dashboard">
-      <div>
-        <p class="eyebrow">YOUR DASHBOARD</p>
-        <h2>Communication trend</h2>
-        <p class="muted">A simple visual history of your check-ins.</p>
-      </div>
-      <div class="chart">
-        <div class="gridline"></div><div class="gridline"></div><div class="gridline"></div>
-        <div class="bars" id="bars">
-          <span style="height:30%"></span><span style="height:45%"></span><span style="height:38%"></span>
-          <span style="height:62%"></span><span style="height:52%"></span><span style="height:70%"></span>
-          <span style="height:58%"></span>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div><small>CHECK-INS</small><b id="checkins">0</b></div>
-        <div><small>BASELINE</small><b>Building</b></div>
-        <div><small>STATUS</small><b class="good">Active</b></div>
-      </div>
-    </section>
+        <!-- HOME -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="tag">A SAFE SPACE TO UNDERSTAND</p>
 
-    <section id="privacy" class="privacy">
-      <h2>🔒 Privacy by design</h2>
-      <p>TraumaBond is designed around voluntary check-ins. In this prototype, analysis happens in your browser and your entries are not uploaded to a server.</p>
-    </section>
-  </main>
+                <h1>
+                    Understanding
+                    <span>Trauma Bonds</span>
+                </h1>
 
-  <footer>TraumaBond © 2026 • Built for wellbeing reflection, not diagnosis.</footer>
-  <script src="script.js"></script>
+                <p class="hero-text">
+                    TraumaBond is an awareness platform designed to help
+                    people understand unhealthy emotional attachment,
+                    recognize warning signs, and find supportive resources.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#learn" class="btn primary">Learn More</a>
+                    <a href="#check" class="btn secondary">Self Check</a>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="heart">♡</div>
+                <h2>You deserve healthy connections.</h2>
+                <p>
+                    Understanding what you're experiencing is an important
+                    first step.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="section">
+            <p class="section-label">WHAT IS IT?</p>
+
+            <h2>Trauma Bonding</h2>
+
+            <p class="section-intro">
+                A trauma bond can develop when a person becomes emotionally
+                attached to someone who repeatedly hurts, manipulates, or
+                mistreats them while also providing periods of affection,
+                reassurance, or kindness.
+            </p>
+
+            <div class="cards">
+
+                <div class="info-card">
+                    <div class="icon">🔄</div>
+                    <h3>The Cycle</h3>
+                    <p>
+                        Harmful behaviour may be followed by affection,
+                        apologies, or calm periods, creating a repeating cycle.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">💭</div>
+                    <h3>Emotional Attachment</h3>
+                    <p>
+                        Strong emotions can make it difficult to recognize
+                        unhealthy patterns or leave the relationship.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">🌱</div>
+                    <h3>Awareness</h3>
+                    <p>
+                        Learning about these patterns can help someone
+                        understand their experiences and seek support.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- LEARN -->
+        <section id="learn" class="section alternate">
+
+            <p class="section-label">LEARN</p>
+
+            <h2>Recognizing the Warning Signs</h2>
+
+            <div class="sign-grid">
+
+                <div class="sign">
+                    <span>01</span>
+                    <div>
+                        <h3>Repeated Hurt</h3>
+                        <p>
+                            Someone repeatedly hurts, insults, controls,
+                            threatens, or manipulates you.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sign">
+                    <span>02</span>
+                    <div>
+                        <h3>Extreme Highs and Lows</h3>
+                        <p>
+                            The relationship alternates between painful
+                            experiences and intense affection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sign">
+                    <span>03</span>
+                    <div>
+                        <h3>Feeling Responsible</h3>
+                        <p>
+                            You feel responsible for the other person's
+                            behaviour, emotions, or happiness.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sign">
+                    <span>04</span>
+                    <div>
+                        <h3>Difficulty Leaving</h3>
+                        <p>
+                            Even when you recognize the relationship is harmful,
+                            leaving feels extremely difficult.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sign">
+                    <span>05</span>
+                    <div>
+                        <h3>Isolation</h3>
+                        <p>
+                            You become increasingly disconnected from friends,
+                            family, or other sources of support.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sign">
+                    <span>06</span>
+                    <div>
+                        <h3>Walking on Eggshells</h3>
+                        <p>
+                            You constantly worry about triggering anger,
+                            conflict, or punishment.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SELF CHECK -->
+        <section id="check" class="section check-section">
+
+            <p class="section-label">SELF CHECK</p>
+
+            <h2>Reflect on Your Relationship</h2>
+
+            <p class="section-intro">
+                This is an awareness tool, not a diagnosis. Answer honestly
+                based on your own experience.
+            </p>
+
+            <div class="quiz-box">
+
+                <div id="question-area">
+
+                    <div class="progress">
+                        <div id="progress-bar"></div>
+                    </div>
+
+                    <p id="question-number">Question 1 of 8</p>
+
+                    <h3 id="question">
+                        Do you often feel afraid of how the other person
+                        will react to you?
+                    </h3>
+
+                    <div class="answers">
+
+                        <button onclick="answer(1)">Yes</button>
+                        <button onclick="answer(0)">No</button>
+
+                    </div>
+
+                </div>
+
+
+                <div id="result" class="result hidden">
+
+                    <div class="result-icon">♡</div>
+
+                    <h3 id="result-title">
+                        Thank you for reflecting.
+                    </h3>
+
+                    <p id="result-text"></p>
+
+                    <button class="restart" onclick="restartQuiz()">
+                        Take Again
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p class="disclaimer">
+                This self-check cannot determine whether you are experiencing
+                abuse or a trauma bond. If you feel unsafe, consider reaching
+                out to someone you trust or a qualified professional.
+            </p>
+
+        </section>
+
+
+        <!-- RESOURCES -->
+        <section id="resources" class="section alternate">
+
+            <p class="section-label">SUPPORT</p>
+
+            <h2>You Don't Have to Handle Everything Alone</h2>
+
+            <p class="section-intro">
+                Reaching out for support can be difficult, but you deserve
+                relationships where you feel safe, respected, and heard.
+            </p>
+
+            <div class="resource-cards">
+
+                <div class="resource-card">
+                    <h3>Talk to Someone</h3>
+                    <p>
+                        Consider speaking with a trusted friend, family
+                        member, teacher, counsellor, or mental-health
+                        professional.
+                    </p>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Prioritize Safety</h3>
+                    <p>
+                        If someone is threatening or hurting you, prioritize
+                        your immediate safety and contact appropriate local
+                        emergency or support services.
+                    </p>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Be Kind to Yourself</h3>
+                    <p>
+                        Experiencing difficulty leaving an unhealthy
+                        relationship does not make you weak.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div class="footer-logo">TraumaBond</div>
+
+        <p>
+            Awareness • Understanding • Support
+        </p>
+
+        <p class="copyright">
+            © 2026 TraumaBond. Created for awareness and education.
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
